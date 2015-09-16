@@ -10,8 +10,14 @@ pinMode(ss, OUTPUT);
 
 void loop() {
  digitalWrite(ss, LOW); 
- SPI.transfer(0);
- SPI.transfer(160);
+ 
+ //Transmit a byte from master to slave, and simultaneously receive a byte 
+ //from slave to master. SPI always transmits and receives at the same time,
+ //but often the received byte is ignored. When only reception is needed, 
+ //0 or 255 is transmitted to cause the reception.
+ 
+ SPI.transfer(0); //address
+ SPI.transfer(160);//value
  digitalWrite(ss, HIGH); 
  delay(del); 
 }
