@@ -1,0 +1,46 @@
+void setup() {
+  // Set up SPI
+  /* Set MOSI, SS, and SCK output */
+  DDRB |= _BV(PORTB2)|_BV(PORTB1) | _BV(PORTB4);
+
+  /* Enable SPI, Master, set clock rate fck/16, clock phase trailing */
+  SPCR = _BV(SPE)| _BV(MSTR)| _BV(SPR0) | _BV(CPHA);
+  PORTB |= _BV(PORTB4); // Start SS active high to prevent accidental communication
+
+
+  delay(70); // Give the Tiny time to start up before you send any commands to it
+  // Turn off motors and servos in case they were left on by previous program
+  transmitByteToTiny(0xFF);
+  transmitByteToTiny(0xFE);
+
+
+}
+void transmitByteToTiny(byte cData){
+  // Set SS pin low as Hummingbird doesn't talk on SPI to anything else
+  PORTB &= ~_BV(PORTB4);
+  delayMicroseconds(20);
+  /// Start transmission
+  SPDR = cData;
+  // Wait for transmission complete
+  while(!(SPSR & (1<<SPIF)));
+  delayMicroseconds(40);
+  PORTB |= _BV(PORTB4);
+}
+
+void loop() {
+  motor(1,160); 
+
+}
+
+void motor(byte port, int velocity){
+ int direction = 0;
+  if(velocity < 0)
+  {
+    velocity = -velocity;
+    direction = 1;
+  }
+
+  transmitByteToTiny(port+3 + direction*2);
+  delayMicroseconds(50);
+  transmitByteToTiny(velocity); 
+}
