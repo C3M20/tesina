@@ -1,0 +1,17 @@
+I.	Bluetooth 
+a.	Cambiar Voltaje:  https://www.youtube.com/watch?v=W5okUciwFkI
+b.	Como hacer la aplicación
+  i.	Send data to Arduino. How to connect components. (Use a voltage converter) Android application 
+    1.	 https://www.youtube.com/watch?v=fJvtMszk2G4
+c.	Chassi 
+  i.	https://www.youtube.com/watch?v=35tQBdpNXH0
+  ii.	https://www.youtube.com/watch?v=ygt0yVI1ZCE&feature=iv&src_vid=35tQBdpNXH0&annotation_id=annotation_172720
+d.	Ejemplo: Android Phone --> Arduino 
+   i.	http://www.circuitmagic.com/arduino/arduino-and-bluetooth-hc-06-to-control-the-led-with-android-device/
+   ii.	SoftwareSerial Lib : https://www.arduino.cc/en/Reference/SoftwareSerial
+e.	Ejemplo: Arduino --> Android Phone 
+  i.	https://www.youtube.com/watch?v=wWnseUPsEDg
+  ii.	https://wingoodharry.wordpress.com/2014/04/07/anrdroid-sendreceive-data-with-arduino-via-bluetooth-part-1/
+
+
+1.	To plot graphs: http://androidplot.com/
